@@ -4,22 +4,19 @@ import telegram
 import time
 from dotenv import load_dotenv
 
-load_dotenv() 
+load_dotenv()
 
 
-PRACTICUM_TOKEN = os.getenv("PRACTICUM_TOKEN") 
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN') 
-CHAT_ID = os.getenv('TELEGRAM_CHAT_ID') 
-
-bot = telegram.Bot(TELEGRAM_TOKEN) 
-
-URL = 'https://praktikum.yandex.ru/api/user_api/homework_statuses/' 
+PRACTICUM_TOKEN = os.getenv("PRACTICUM_TOKEN")
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
+CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 
 bot = telegram.Bot(TELEGRAM_TOKEN)
 
+URL = 'https://praktikum.yandex.ru/api/user_api/homework_statuses/'
+
 
 def parse_homework_status(homework):
-<<<<<<< HEAD
     homework_name = homework.get('homework_name')
     if homework_name is None:
         raise RuntimeError('Имя задания неопределено - None')
@@ -48,16 +45,6 @@ def get_homework_statuses(current_timestamp):
     }
     if current_timestamp is None:
         current_timestamp = int(time.time())
-=======
-    return 'Test'
-
-
-def get_homework_statuses(current_timestamp):
-    URL = 'https://praktikum.yandex.ru/api/user_api/homework_statuses/'
-    headers = {
-        'Authorization': f'OAuth {PRACTICUM_TOKEN}'
-    }
->>>>>>> de1ec20b34c3fad2dccb53ffa0f5c4ca3d06a555
     data = {
         'from_date': current_timestamp
     }
